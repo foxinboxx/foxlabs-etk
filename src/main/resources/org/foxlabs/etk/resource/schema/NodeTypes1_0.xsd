@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:etk="http://foxlabs.org/projects/etk/1.0/schema/NodeTypes1_0.xsd"
+            targetNamespace="http://foxlabs.org/projects/etk/1.0/schema/NodeTypes1_0.xsd"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+    
+    <!-- ================================================================== -->
+    <!-- =   PRIMITIVE TYPES                                              = -->
+    <!-- ================================================================== -->
+    
+    <xsd:simpleType name="NumberType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="byte"/>
+            <xsd:enumeration value="short"/>
+            <xsd:enumeration value="int"/>
+            <xsd:enumeration value="long"/>
+            <xsd:enumeration value="float"/>
+            <xsd:enumeration value="double"/>
+            <xsd:enumeration value="bigint"/>
+            <xsd:enumeration value="bigdec"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="ObjectType">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="DataType">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="FunctionName">
+        <xsd:restriction base="xsd:anyURI"/>
+    </xsd:simpleType>
+    
+    <!-- ================================================================== -->
+    <!-- =   NODE ELEMENTS                                                = -->
+    <!-- ================================================================== -->
+    
+    <xsd:element name="Node"
+                 type="etk:NodeType"
+                 abstract="true"/>
+    
+    <xsd:element name="Null"
+                 type="etk:NullNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="True"
+                 type="etk:TrueNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="False"
+                 type="etk:FalseNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Enum"
+                 type="etk:EnumNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Char"
+                 type="etk:CharNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Number"
+                 type="etk:NumberNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="String"
+                 type="etk:StringNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Variable"
+                 type="etk:VariableNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Array"
+                 type="etk:ArrayNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Function"
+                 type="etk:FunctionNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Cast"
+                 type="etk:CastNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Neg"
+                 type="etk:UnaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Add"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Sub"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Mul"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Div"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Mod"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Eq"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Ne"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Gt"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Ge"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Lt"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Le"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Not"
+                 type="etk:UnaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="And"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Or"
+                 type="etk:BinaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Condition"
+                 type="etk:ConditionNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Concat"
+                 type="etk:NaryNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Index"
+                 type="etk:IndexNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Property"
+                 type="etk:PropertyNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <xsd:element name="Method"
+                 type="etk:MethodNodeType"
+                 substitutionGroup="etk:Node"/>
+    
+    <!-- ================================================================== -->
+    <!-- =   NODE TYPES                                                   = -->
+    <!-- ================================================================== -->
+    
+    <xsd:complexType name="NodeType" abstract="true"/>
+    
+    <xsd:complexType name="UnaryNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence minOccurs="1" maxOccurs="1">
+                    <xsd:element ref="etk:Node"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="BinaryNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence minOccurs="2" maxOccurs="2">
+                    <xsd:element ref="etk:Node"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="NaryNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element ref="etk:Node"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="LiteralNodeType" abstract="true">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="NullNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:LiteralNodeType">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="TrueNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:LiteralNodeType">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="FalseNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:LiteralNodeType">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="EnumNodeType">
+        <xsd:complexContent mixed="true">
+            <xsd:extension base="etk:LiteralNodeType">
+                <xsd:attribute name="type" type="etk:ObjectType" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="CharNodeType">
+        <xsd:complexContent mixed="true">
+            <xsd:extension base="etk:LiteralNodeType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="NumberNodeType">
+        <xsd:complexContent mixed="true">
+            <xsd:extension base="etk:LiteralNodeType">
+                <xsd:attribute name="type" type="etk:NumberType" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="StringNodeType">
+        <xsd:complexContent mixed="true">
+            <xsd:extension base="etk:LiteralNodeType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="VariableNodeType">
+        <xsd:complexContent mixed="true">
+            <xsd:extension base="etk:NodeType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ArrayNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element ref="etk:Node"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="FunctionNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence>
+                    <xsd:element name="Arguments">
+                        <xsd:complexType>
+                            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="name" type="etk:FunctionName" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="CastNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence>
+                    <xsd:element ref="etk:Node"/>
+                </xsd:sequence>
+                <xsd:attribute name="type" type="etk:DataType" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ConditionNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence>
+                    <xsd:element name="If">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Then">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Else">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="IndexNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence>
+                    <xsd:element name="Collection">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Key">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="PropertyNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence>
+                    <xsd:element name="Object">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:NCName" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="MethodNodeType">
+        <xsd:complexContent>
+            <xsd:extension base="etk:NodeType">
+                <xsd:sequence>
+                    <xsd:element name="Object">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Arguments">
+                        <xsd:complexType>
+                            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                                <xsd:element ref="etk:Node"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:NCName" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+</xsd:schema>
