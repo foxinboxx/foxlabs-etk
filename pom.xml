@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
     <name>Expression ToolKit</name>
     <description>Framework that allows to evaluate expressions.</description>
-    <url>http://foxlabs.org/p/etk/1.0/</url>
+    <url>http://foxlabs.org/p/etk/1.0</url>
     <inceptionYear>2008</inceptionYear>
     <organization>
         <name>FoxLabs</name>
@@ -38,13 +38,13 @@
     </developers>
     
     <scm>
-        <url>https://bitbucket.org/foxinbox/foxlabs-etk/</url>
-        <connection>scm:git:https://bitbucket.org/foxinbox/foxlabs-etk.git</connection>
+        <url>https://github.com/foxinboxx/foxlabs-etk</url>
+        <connection>scm:git:https://github.com/foxinboxx/foxlabs-etk.git</connection>
     </scm>
     
     <issueManagement>
-        <system>Bitbucket</system>
-        <url>https://bitbucket.org/foxinbox/foxlabs-etk/issues</url>
+        <system>GitHub</system>
+        <url>https://github.com/foxinboxx/foxlabs-etk/issues</url>
     </issueManagement>
     
     <properties>
