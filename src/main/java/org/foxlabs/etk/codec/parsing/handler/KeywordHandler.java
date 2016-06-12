@@ -23,7 +23,8 @@ import org.foxlabs.etk.codec.parsing.LookaheadReader;
 import org.foxlabs.etk.codec.parsing.Token;
 import org.foxlabs.etk.codec.parsing.TokenHandler;
 import org.foxlabs.etk.codec.parsing.Tokenizer;
-import org.foxlabs.util.UnicodeSet;
+
+import org.foxlabs.util.Strings;
 
 public class KeywordHandler extends TokenHandler {
     
@@ -65,7 +66,7 @@ public class KeywordHandler extends TokenHandler {
     }
     
     public String toString() {
-        return "\"" + UnicodeSet.escape(new String(keywordIn)) + "\"";
+        return "\"" + Strings.escape(new String(keywordIn)) + "\"";
     }
     
 }
