@@ -213,7 +213,6 @@ public final class Types {
         return java.lang.reflect.Array.newInstance(type, 0).getClass();
     }
     
-    @SuppressWarnings("unchecked")
     public static Enum<?> enumvalueOf(Class<?> type, String name) {
         return Enum.valueOf(type.asSubclass(Enum.class), name);
     }

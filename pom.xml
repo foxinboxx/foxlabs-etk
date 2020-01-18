@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.foxlabs</groupId>
     <artifactId>foxlabs-etk</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>Expression ToolKit</name>
     <description>Framework that allows to evaluate expressions.</description>

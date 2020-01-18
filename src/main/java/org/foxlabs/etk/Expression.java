@@ -92,7 +92,9 @@ public class Expression implements Serializable {
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
         Environment context = DefaultEnvironment.getGlobalContext();
-        root = (new NodeInputStream(in)).readNode(context);
+        try (NodeInputStream stream = new NodeInputStream(in)) {
+            root = stream.readNode(context);
+        }
     }
     
     private void writeObject(ObjectOutputStream out) throws IOException {
