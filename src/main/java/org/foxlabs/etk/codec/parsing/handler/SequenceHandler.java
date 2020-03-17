@@ -19,12 +19,11 @@ package org.foxlabs.etk.codec.parsing.handler;
 import java.io.Writer;
 import java.io.IOException;
 
+import org.foxlabs.common.Strings;
 import org.foxlabs.etk.codec.parsing.LookaheadReader;
 import org.foxlabs.etk.codec.parsing.Token;
 import org.foxlabs.etk.codec.parsing.TokenHandler;
 import org.foxlabs.etk.codec.parsing.Tokenizer;
-
-import org.foxlabs.util.Strings;
 
 public class SequenceHandler extends TokenHandler {
     
